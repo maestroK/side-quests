@@ -1,0 +1,15 @@
+Title: characterizing privacy in quantum machine learning
+Date: 2025-05-19
+URL: https://www.nature.com/articles/s41534-025-01022-z
+arXiv PDF: Not found
+--------------------------------------------------
+Title: interpretable machine learning for atomic scale magnetic anisotropy in quantum materials
+Date: 2025-05-18
+URL: https://www.nature.com/articles/s41524-025-01637-y
+arXiv PDF: Not found
+--------------------------------------------------
+Title: quantum neural networks form gaussian processes
+Date: 2025-05-21
+URL: https://www.nature.com/articles/s41567-025-02883-z
+arXiv PDF: http://arxiv.org/pdf/2305.09957v3.pdf
+--------------------------------------------------
