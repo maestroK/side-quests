@@ -1,52 +1,58 @@
-# Quantum Machine Learning Paper Scraper
+Quantum Machine Learning Paper Scraper
+Overview
+A Jupyter notebook (nature_scraper.ipynb) to scrape recent Quantum Machine Learning (QML) articles from Nature (last 7 days), filter by title and arXiv abstract, and download PDFs from arXiv. Saves metadata (title, date, URL, PDF link) to recent_qml_nature_links.txt.
+Features
 
-## Overview
-This Python script scrapes recent **Quantum Machine Learning (QML)** articles from [Nature](https://www.nature.com) published within the last 7 days. It filters for QML-specific papers, downloads their PDF versions from [arXiv](https://arxiv.org) if available, and saves metadata (title, date, URL, PDF link) to a text file.
+QML Filter: Targets papers with "quantum" and terms like "machine learning", "qml", "neural network", or "deep learning" in title and arXiv abstract.
+arXiv Integration: Queries arXiv API for PDFs using title and abstract.
+Output: Saves metadata to recent_qml_nature_links.txt and PDFs to downloads/.
+Rate Limiting: 2-second delays to avoid server bans.
 
-## Features
-- **QML Filter**: Targets papers with "quantum" and terms like "machine learning", "qml", "neural network", or "deep learning" in the title.
-- **arXiv Integration**: Queries arXiv's API to find and download PDF versions.
-- **Output**: Saves article metadata to `recent_qml_nature_links.txt` and PDFs to a `downloads` folder.
-- **Rate Limiting**: Includes 2-second delays to respect server limits.
+Requirements
 
-## Requirements
-- Python 3.8+
-- Libraries: `requests`, `beautifulsoup4`
-```bash
-pip install requests beautifulsoup4
-```
+Python 3.8+
+Libraries: requests, beautifulsoup4, jupyter
 
-## Usage
-1. Clone the repository:
-```bash
-git clone [your-repo-url]
-cd [repo-name]
-```
-2. Run the script:
-```bash
-python scrape_qml_nature.py
-```
-3. Check outputs:
-   - Metadata: `recent_qml_nature_links.txt`
-   - PDFs: `downloads/` folder
+pip install requests beautifulsoup4 jupyter
 
-## Automation with Cron
-Automate weekly runs using a cron job (e.g., every Sunday at midnight):
-```bash
+Usage
+
+Clone the repository:
+
+git clone https://github.com/maestroK/side-quests.git
+cd side-quests/nature_scraper
+
+
+Run the notebook:
+
+jupyter notebook nature_scraper.ipynb
+
+Execute all cells in Jupyter.
+
+Check outputs:
+Metadata: recent_qml_nature_links.txt
+PDFs: downloads/
+
+
+
+Automation with Cron
+Convert the notebook to a Python script for cron jobs:
+jupyter nbconvert --to script nature_scraper.ipynb
+
+Automate weekly runs (e.g., Sunday at midnight):
 crontab -e
-```
-Add:
-```bash
-0 0 * * 0 /path/to/python3 /path/to/scrape_qml_nature.py
-```
 
-## Notes
-- **Platform**: Tested on macOS (M1 MacBook Pro).
-- **Limitations**: arXiv search may miss papers if titles differ slightly. Consider adding fuzzy matching for robustness.
-- **Maintenance**: Nature’s page structure may change; update CSS selectors (`.c-card`, `.app-article-list-row__item`) if needed.
+Add (replace with your paths):
+0 0 * * 0 /usr/bin/python3 /path/to/side-quests/nature_scraper/nature_scraper.py
 
-## License
-MIT License. See [LICENSE](LICENSE) for details.
+Verify Python path with which python3.
+Notes
 
-## Contributing
-Pull requests welcome! For major changes, open an issue first.
+Platform: Tested on macOS (M1 MacBook Pro).
+Limitations: arXiv search may miss papers due to title/abstract mismatches. Consider fuzzy matching for improvement.
+Maintenance: Update CSS selectors (.c-card, .app-article-list-row__item) if Nature’s page changes.
+
+License
+MIT License. See LICENSE.
+Contributing
+Pull requests welcome. Open an issue for major changes.
